@@ -2,10 +2,12 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --no-clear -s"
+    "start:spa": "sirv public --no-clear -s",
+    "start": "node server.js"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -24,8 +26,12 @@
   },
   "dependencies": {
     "axios": "^0.21.4",
+    "dotenv": "^14.2.0",
     "express": "^4.17.2",
     "sirv-cli": "^2.0.0",
     "svelte-router-spa": "^6.0.3"
+  },
+  "engines": {
+    "node": "14.15.5"
   }
 }

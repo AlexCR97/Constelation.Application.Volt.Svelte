@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "command": "npm run dev",
+            "name": "Serve :3030 (SPA)",
+            "request": "launch",
+            "type": "node-terminal",
+        },
+        {
+            "command": "npm run start",
+            "name": "Start Server :8180 (Local)",
+            "request": "launch",
+            "type": "node-terminal",
+            "env": {
+                "NODE_ENV": "local"
+            },
+        },
+        {
+            "command": "npm run start",
+            "name": "Start Server :8180 (Development)",
+            "request": "launch",
+            "type": "node-terminal",
+            "env": {
+                "NODE_ENV": "development"
+            },
+        },
+    ]
+}
