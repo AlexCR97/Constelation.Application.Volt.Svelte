@@ -1,5 +1,5 @@
 <script>
-    import { routes } from "./routes";
+    import { routes } from "./router";
     import { Router } from "svelte-router-spa";
 </script>
 
