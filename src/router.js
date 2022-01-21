@@ -18,6 +18,13 @@ export const routes = [
 ]
 
 export const router = {
+    back: async () => {
+        store.pageTransition.show()
+        await waitAsync(500)
+        store.pageTransition.hide()
+        navigateTo(path)
+        window.history.back()
+    },
     splash: {
         go: () => navigateAsync('/'),
     },
@@ -30,15 +37,10 @@ export const router = {
 }
 
 async function navigateAsync(path) {
-    console.log('Showing...')
     store.pageTransition.show()
-    console.log('Waiting...')
     await waitAsync(500)
-    console.log('Hiding...')
     store.pageTransition.hide()
-    console.log('Navigating...')
     navigateTo(path)
-    console.log('Navigation complete!')
 }
 
 async function waitAsync(milliseconds) {

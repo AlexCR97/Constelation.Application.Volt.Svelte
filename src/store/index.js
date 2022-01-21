@@ -14,4 +14,8 @@ export default {
         },
         subscribe: pageTransitionStore.subscribe,
     },
+    user: {
+        getAccessToken: () => localStorage.getItem('constelation.volt'),
+        setAccessToken: (accessToken) => localStorage.setItem('constelation.volt', accessToken),
+    },
 }

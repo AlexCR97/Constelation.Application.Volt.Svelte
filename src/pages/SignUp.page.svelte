@@ -1,6 +1,32 @@
 <script>
-    import { Button, Card, Headline, Label, Subhead } from "attractions";
+    import { Button, Card, Headline, Label, TextField } from "attractions";
     import { router } from "../router";
+    import { BackButton } from "../components";
+    import api from "../api";
+
+    const signUpButtons = [
+        {
+            icon: "telephone",
+            label: "Sign Up with my Phone Number",
+            click: () => (signUpMethod = "telephone"),
+        },
+        {
+            icon: "google",
+            label: "Sign Up with Google",
+            click: () => (signUpMethod = "google"),
+        },
+        {
+            icon: "envelope",
+            label: "Sign Up with an Email",
+            click: () => (signUpMethod = "envelope"),
+        },
+    ];
+
+    let signUpMethod = "";
+
+    function onBackToSignUpMethodClicked() {
+        signUpMethod = "";
+    }
 
     function onLoginClicked() {
         router.login.go();
@@ -11,37 +37,49 @@
     <div class="width-100">
         <Headline class="mb-5">Sign Up to Volt</Headline>
 
-        <Card
-            outline
-            tight
-            class="d-flex-center-y shadow p-3 mb-3"
-            style="color: rgba(67, 0, 176, 0.8)"
-        >
-            <i class="bi bi-telephone mr-2" />
-            <p class="m-0">Sign Up with my Phone Number</p>
-        </Card>
+        {#if !signUpMethod}
+            {#each signUpButtons as b}
+                <div on:click={b.click}>
+                    <Card
+                        outline
+                        tight
+                        class={`d-flex-center-y cursor-pointer shadow text-select-none p-3 mb-3 color-${b.icon}`}
+                    >
+                        <i class={`bi bi-${b.icon} mr-2`} />
+                        <p class="m-0">{b.label}</p>
+                    </Card>
+                </div>
+            {/each}
+        {/if}
 
-        <Card
-            outline
-            tight
-            class="d-flex-center-y shadow p-3 mb-3"
-            style="border-color: #DA5044; color: #DA5044"
-        >
-            <i class="bi bi-google mr-2" />
-            <p class="m-0">Sign Up with Google</p>
-        </Card>
+        {#if signUpMethod}
+            <div class="mb-4">
+                <BackButton
+                    navigate={false}
+                    on:clicked={onBackToSignUpMethodClicked}
+                >
+                    Try another sign up method
+                </BackButton>
+            </div>
+        {/if}
 
-        <Card
-            outline
-            tight
-            class="d-flex-center-y shadow p-3 mb-3"
-            style="border-color: #242424; color: #242424"
-        >
-            <i class="bi bi-envelope mr-2" />
-            <p class="m-0">Sign Up with an Email</p>
-        </Card>
-
-        <br /><br /><br /><br />
+        {#if signUpMethod == "envelope"}
+            <TextField class="mb-4" label="Email" outline type="email" withItem>
+                <i class="bi bi-envelope item" />
+            </TextField>
+            <TextField
+                class="mb-4"
+                label="Password"
+                outline
+                type="password"
+                withItem
+            >
+                <i class="bi bi-lock item" />
+            </TextField>
+            <div class="d-flex justify-end">
+                <Button class="px-4" filled>Sign Up</Button>
+            </div>
+        {/if}
     </div>
 </div>
 
@@ -57,3 +95,20 @@
         </Button>
     </div>
 </div>
+
+<style global>
+    .color-telephone {
+        color: rgba(67, 0, 176, 0.8) !important;
+        border-color: rgba(67, 0, 176, 0.8) !important;
+    }
+
+    .color-google {
+        color: #da5044 !important;
+        border-color: #da5044 !important;
+    }
+
+    .color-envelope {
+        color: #242424 !important;
+        border-color: #242424 !important;
+    }
+</style>
