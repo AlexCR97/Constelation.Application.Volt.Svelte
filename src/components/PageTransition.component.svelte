@@ -16,7 +16,6 @@
 
 <style>
     .page-transition {
-        border: 3px solid red;
         position: fixed;
         top: 0;
         left: 0;
