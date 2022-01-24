@@ -5,37 +5,36 @@
     import { ResponseError } from "../models/ResponseError.model";
 
     export let error = new ResponseError();
-
-    onMount(() => {
-        console.log("error is:", error);
-    });
 </script>
 
 <div>
-    <div class="d-flex mb-3">
-        <code class="me-auto"> <b>Status Code</b> </code>
-        <code class="ml-3 text-align-left">
+    <p class="mb-2">
+        <code>
+            <b>Status Code</b>
             {error.statusCode}
         </code>
-    </div>
-    <div class="d-flex mb-3">
-        <code class="me-auto"> <b>Type</b> </code>
-        <code class="ml-3">
+    </p>
+    <p class="mb-2">
+        <code>
+            <b>Type</b>
             {error.type}
         </code>
-    </div>
-    <div class="d-flex mb-3">
-        <code class="me-auto"> <b>Message</b> </code>
-        <code class="ml-3">
+    </p>
+    <p class="mb-2">
+        <code>
+            <b>Message</b>
             {error.message}
         </code>
-    </div>
+    </p>
 </div>
 
-<code class="mb-3"> <b>Details</b> </code>
-<code>
-    <pre>
+<p class="mb-2">
+    <code> <b>Details</b> </code>
+</p>
+<p>
+    <code>
+        <pre>
             {JSON.stringify(error.details, null, 4)}
-
         </pre>
-</code>
+    </code>
+</p>

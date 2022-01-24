@@ -9,10 +9,8 @@ const api = axios.create({
 })
 
 api.interceptors.response.use((response) => {
-    console.log('response:', response)
     return response;
 }, (err) => {
-    console.log('Intercepted error:', err)
     const error = ResponseError.fromAxiosError(err)
     store.modal.open({ component: ResponseErrorModal, props: { error } })
     return Promise.reject(error)
@@ -29,7 +27,6 @@ authApi.interceptors.request.use(request => {
 })
 
 authApi.interceptors.response.use(response => {
-    console.log('response:', response)
     return response
 }, err => {
     return Promise.reject(err)

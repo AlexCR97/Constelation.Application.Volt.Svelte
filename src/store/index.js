@@ -48,7 +48,10 @@ export default {
         subscribe: pageTransitionStore.subscribe,
     },
     user: {
-        getAccessToken: () => localStorage.getItem('constelation.volt'),
-        setAccessToken: (accessToken) => localStorage.setItem('constelation.volt', accessToken),
+        getAccessToken: () => localStorage.getItem('constelation.volt.accessToken'),
+        setAccessToken: (accessToken) => localStorage.setItem('constelation.volt.accessToken', accessToken),
+
+        getRefreshToken: () => localStorage.getItem('constelation.volt.refreshToken'),
+        setRefreshToken: (refreshToken) => localStorage.setItem('constelation.volt.refreshToken', refreshToken),
     },
 }

@@ -47,13 +47,7 @@
 
         try {
             await waitAsync(1000);
-            const response = await services.auth.signUpWithEmailAsync(
-                email,
-                password
-            );
-            console.log("response:", response);
-        } catch (err) {
-            console.log("err:", err);
+            await services.auth.signUpWithEmailAsync(email, password);
         } finally {
             store.loadingModal.close();
         }
