@@ -1,6 +1,6 @@
 import { navigateTo } from "svelte-router-spa";
-import { LoginPage, SignUpPage, SplashPage } from "./pages";
-import store from "./store";
+import { LoginPage, SignUpPage, SplashPage } from "../pages";
+import store from "../store";
 
 export const routes = [
     {

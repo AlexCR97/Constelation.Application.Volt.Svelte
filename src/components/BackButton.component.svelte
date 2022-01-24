@@ -1,7 +1,7 @@
 <script>
     import { Button, Subhead, Label } from "attractions";
     import { createEventDispatcher } from "svelte";
-    import { router } from "../router";
+    import { router } from "../router/router";
 
     export let navigate = true;
 
