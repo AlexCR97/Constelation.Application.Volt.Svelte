@@ -31,7 +31,13 @@
             "type": "node-terminal"
         },
         {
-            "command": "npm run heroku:open",
+            "command": "npm run heroku:open:local",
+            "name": "Launch App (Local)",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "npm run heroku:open:dev",
             "name": "Launch App (Development)",
             "request": "launch",
             "type": "node-terminal"

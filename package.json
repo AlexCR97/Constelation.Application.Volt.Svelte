@@ -6,10 +6,11 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --no-clear -s",
-    "start:server": "node server.js",
+    "start:spa": "sirv public --no-clear -s",
+    "start": "node server.js",
     "heroku:publish": "git push heroku main",
-    "heroku:open": "heroku open"
+    "heroku:open:local": "heroku local web",
+    "heroku:open:dev": "heroku open"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
