@@ -9,6 +9,12 @@ const loadingModalStore = writable({
     message: '',
 })
 
+const modalStore = writable({
+    open: false,
+    component: undefined,
+    props: {},
+})
+
 export default {
     loadingModal: {
         open({ message }) {
@@ -22,6 +28,15 @@ export default {
             setTimeout(() => loadingModalStore.set({ open: false, message: '' }), milliseconds);
         },
         subscribe: loadingModalStore.subscribe,
+    },
+    modal: {
+        open({ component, props }) {
+            modalStore.set({ open: true, component, props })
+        },
+        close() {
+            modalStore.set({ open: false, component: undefined, props: {} })
+        },
+        subscribe: modalStore.subscribe,
     },
     pageTransition: {
         show() {

@@ -1,7 +1,7 @@
 <script>
     import { Button, Card, Headline, Label, TextField } from "attractions";
     import { router } from "../router";
-    import { BackButton } from "../components";
+    import { BackButton, ModalContent, CustomModal } from "../components";
     import api from "../api";
     import services from "../services";
     import store from "../store";
@@ -28,6 +28,7 @@
     let signUpMethod = "";
     let email = "";
     let password = "";
+    let modalContentRef = undefined;
 
     function onBackToSignUpMethodClicked() {
         signUpMethod = "";
@@ -51,6 +52,8 @@
                 password
             );
             console.log("response:", response);
+        } catch (err) {
+            console.log("err:", err);
         } finally {
             store.loadingModal.close();
         }

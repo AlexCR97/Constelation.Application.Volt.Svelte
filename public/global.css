@@ -88,6 +88,14 @@ body {
 									supported by Chrome, Edge, Opera and Firefox */
 }
 
+.me-auto {
+	margin-right: auto;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
 /* OVERRIDES */
 
 .text-field.with-item.left .item {
