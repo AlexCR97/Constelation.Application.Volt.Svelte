@@ -24,5 +24,17 @@
                 "NODE_ENV": "development"
             },
         },
+        {
+            "command": "npm run heroku:publish",
+            "name": "Publish to Heroku",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "npm run heroku:open",
+            "name": "Launch App (Development)",
+            "request": "launch",
+            "type": "node-terminal"
+        },
     ]
 }
