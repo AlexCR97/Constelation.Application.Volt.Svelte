@@ -3,6 +3,9 @@
     import { router } from "../router";
     import { BackButton } from "../components";
     import api from "../api";
+    import services from "../services";
+    import store from "../store";
+    import { waitAsync } from "../utils/time.utils";
 
     const signUpButtons = [
         {
@@ -23,6 +26,8 @@
     ];
 
     let signUpMethod = "";
+    let email = "";
+    let password = "";
 
     function onBackToSignUpMethodClicked() {
         signUpMethod = "";
@@ -30,6 +35,25 @@
 
     function onLoginClicked() {
         router.login.go();
+    }
+
+    function onSignUpClicked() {
+        signUpAsync(email, password);
+    }
+
+    async function signUpAsync(email, password) {
+        store.loadingModal.open({ message: "Signing Up" });
+
+        try {
+            await waitAsync(1000);
+            const response = await services.auth.signUpWithEmailAsync(
+                email,
+                password
+            );
+            console.log("response:", response);
+        } finally {
+            store.loadingModal.close();
+        }
     }
 </script>
 
@@ -64,7 +88,14 @@
         {/if}
 
         {#if signUpMethod == "envelope"}
-            <TextField class="mb-4" label="Email" outline type="email" withItem>
+            <TextField
+                class="mb-4"
+                label="Email"
+                outline
+                type="email"
+                withItem
+                bind:value={email}
+            >
                 <i class="bi bi-envelope item" />
             </TextField>
             <TextField
@@ -73,11 +104,14 @@
                 outline
                 type="password"
                 withItem
+                bind:value={password}
             >
                 <i class="bi bi-lock item" />
             </TextField>
             <div class="d-flex justify-end">
-                <Button class="px-4" filled>Sign Up</Button>
+                <Button class="px-4" filled on:click={onSignUpClicked}
+                    >Sign Up</Button
+                >
             </div>
         {/if}
     </div>

@@ -6,8 +6,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start:spa": "sirv public --no-clear -s",
-    "start": "node server.js",
+    "start": "sirv public --no-clear -s",
+    "start:server": "node server.js",
     "heroku:publish": "git push heroku main",
     "heroku:open": "heroku open"
   },

@@ -35,8 +35,14 @@ async function getUserByIdAsync(id) {
     return response.data
 }
 
+async function signUpAsync(email, password) {
+    const response = await api.post('/signUp', { email, password })
+    return response.data
+}
+
 export default {
     getTokenAsync,
     getUserByIdAsync,
     getUsersAsync,
+    signUpAsync,
 }

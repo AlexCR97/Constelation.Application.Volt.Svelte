@@ -95,3 +95,7 @@ body {
 	left: 0.8em !important;
 	transform: translateY(-50%);
 }
+
+.modal-overlay {
+	background-color: rgba(0, 0, 0, 0.35) !important;
+}
